@@ -9,7 +9,12 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
@@ -22,17 +27,33 @@
     <div class="main text-center container">
       <h1 class="text-center">Welcome to Our Platform</h1>
       <h5 class="text-center">sWiftZone.co</h5>
-      <form>
+      <form id="myform">
         <div class="custom-file">
-          <input type="file" class="custom-file-input" id="validatedCustomFile" required />
-          <label class="custom-file-label text-left" for="validatedCustomFile">No file selected</label>
+          <input
+            type="file"
+            class="custom-file-input"
+            id="customFile"
+            name="filename"
+          />
+          <label
+            class="custom-file-label text-left"
+            tabindex="0"
+            for="customFile"
+            >No file selected</label
+          >
+          <!-- <input type="file" class="browse" value="Browse" /> -->
         </div>
+        <input
+          type="button"
+          class="upload mt-4"
+          onclick="myFunction()"
+          value="Upload"
+        />
       </form>
-      <button class="upload mt-2" text="right">Upload</button>
     </div>
     <div class="table-responsive mt-5 px-md-5 px-1">
       <table class="table table-striped mb-5">
-        <h3>Here is the Table 1</h3>
+        <h3 class="text-center">Here is the Table 1</h3>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -105,5 +126,18 @@
         </tbody>
       </table>
     </div>
+    <script></script>
+    <script>
+      $(".custom-file-input").on("change", function() {
+        var fileName = $(this)
+          .val()
+          .split("\\")
+          .pop();
+        $(this)
+          .siblings(".custom-file-label")
+          .addClass("selected")
+          .html(fileName);
+      });
+    </script>
   </body>
 </html>
